@@ -1,11 +1,13 @@
-from flask import Flask
+from api import app
+from dotenv import load_dotenv
+import os
+from decouple import config
 
-app = Flask(__name__)
+load_dotenv()
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEBUG = config('DEBUG', cast=bool)
+HOST = config("HOST")
+PORT = config("PORT")
 
-
-@app.route()
-def home():
-    return "Hello World"
-
-
-app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ == "__main__":
+    app.run(host=HOST, port=PORT, debug=DEBUG)

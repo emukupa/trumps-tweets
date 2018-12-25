@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "*"
+python-dotenv = "*"
+python-decouple = "*"
+flask-cors = "*"
+tweepy = "*"
 
 [dev-packages]
 
