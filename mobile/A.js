@@ -6,25 +6,27 @@ export default class App extends React.Component {
     tweet: '',
   };
   async componentDidMount() {
-    try {
-      const response = await axios.get('http://0.0.0.0:5000/');
-      this.setState({ tweet: response.data.tweet });
-    } catch (e) {
-      console.log(e);
-    }
+    const response = await axios('http://0.0.0.0:5000/');
+    this.setState({ tweet: response.data.tweet });
   }
-
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 20, textAlign: 'center' }}>Trumps Tweets</Text>
         <Text
           style={{
-            fontSize: 16,
+            fontSize: 20,
+            textAlign: 'center',
+            marginBottom: 10,
+          }}
+        >
+          Trumps latest tweet
+        </Text>
+        <Text
+          style={{
             padding: 10,
-            borderRadius: 10,
+            fontSize: 16,
             borderWidth: 1,
-            borderColor: '#ccc',
+            borderRadius: 10,
             backgroundColor: 'lightblue',
           }}
         >
@@ -36,10 +38,5 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  container: {},
 });
